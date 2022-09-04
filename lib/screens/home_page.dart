@@ -10,7 +10,7 @@ enum Option { teacher,student }
 
 class _HomePageState extends State<HomePage>{
   Option defaultValue = Option.teacher;
-  String option = "null";
+  String option = "teacher";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

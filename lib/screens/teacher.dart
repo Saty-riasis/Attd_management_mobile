@@ -31,13 +31,15 @@ class _teacherState extends State<teacher> {
               }
               else{
                 if(snapshot.hasData){
-                  return ListView.builder(
-                      itemCount:snapshot.data.length ,
-                      itemBuilder: (context,index){
-                        return dispCard(
-                          teacherModel.fromJson(snapshot.data[index])
-                        );
-                      });
+                  return Container(
+                    child: ListView.builder(
+                        itemCount:snapshot.data.length ,
+                        itemBuilder: (context,index){
+                          return dispCard(
+                            teacherModel.fromJson(snapshot.data[index])
+                          );
+                        }),
+                  );
                 }
                 else{
                   return const Center(
@@ -53,7 +55,8 @@ class _teacherState extends State<teacher> {
   }
 
   Widget dispCard (teacherModel data){
-    return Card(child: Column(
+    return Card(
+      child: Column(
       children: [
         Text("${data.name}")
       ],
