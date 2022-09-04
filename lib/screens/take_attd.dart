@@ -12,6 +12,11 @@ class take_attd extends StatefulWidget {
 }
 
 class _take_attdState extends State<take_attd>{
+  List<bool> _isChecked=List<bool>.filled(5,false);
+  @override
+  void initState() {
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,16 +35,15 @@ class _take_attdState extends State<take_attd>{
                     child: ListView.builder(
                         itemCount:snapshot.data.length ,
                         itemBuilder: (context,index){
-                          return InkWell(
-                            onTap: (){
-                              setState(() {
-                                teacherModel.fromJson(snapshot.data[index]).name;
+                          return CheckboxListTile(
+                              title: Text(studentModel.fromJson(snapshot.data[index]).name),
+                              value: _isChecked[index],
+                              onChanged:(val){
+                                setState(() {
+                                  _isChecked[index]=val!;
+                                  print(_isChecked);
+                                });
                               });
-                            },
-                            child: dispCard(
-                                studentModel.fromJson(snapshot.data[index])
-                            ),
-                          );
                         }),
                   );
                 }
